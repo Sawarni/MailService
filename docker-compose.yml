@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  rabbitmq-service:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmqdata:/var/lib/rabbitmq
+    
+
+  mailservice:
+    image: ${DOCKER_REGISTRY-}mailservice
+    build:
+      context: .
+      dockerfile: MailService/Dockerfile
+    depends_on:
+      - rabbitmq-service
+    
+
+  smtpservice:
+    image: ${DOCKER_REGISTRY-}smtpservice
+    build:
+      context: .
+      dockerfile: SmtpService/Dockerfile
+    depends_on:
+      - rabbitmq-service
+volumes:
+  rabbitmqdata:

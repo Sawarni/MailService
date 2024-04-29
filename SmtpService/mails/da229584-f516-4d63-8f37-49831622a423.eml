@@ -1,0 +1,11 @@
+X-Sender: abc@gmail.com
+X-Receiver: xyz@gmail.com
+MIME-Version: 1.0
+From: abc@gmail.com
+To: xyz@gmail.com
+Date: 29 Apr 2024 10:04:28 +0000
+Subject: string1
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: quoted-printable
+
+string1
