@@ -12,6 +12,8 @@ services:
 
   mailservice:
     image: ${DOCKER_REGISTRY-}mailservice
+    ports:
+      - "8080:8080"
     build:
       context: .
       dockerfile: MailService/Dockerfile
@@ -21,6 +23,9 @@ services:
 
   smtpservice:
     image: ${DOCKER_REGISTRY-}smtpservice
+    ports:
+      - "8082:8080"
+      - "8081:8081"
     build:
       context: .
       dockerfile: SmtpService/Dockerfile
