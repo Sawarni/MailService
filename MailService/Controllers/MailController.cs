@@ -54,6 +54,7 @@ namespace MailService.Controllers
                 foreach (var message in messages)
                 {
                     await _publishEndpoint.Publish<IEmailMessage>(message).WaitAsync(TimeSpan.FromSeconds(_appConfigurations.QueueConnectionTimeOut));
+                    Task.Delay(1000).Wait();
                 }
 
             }
