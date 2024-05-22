@@ -1,8 +1,11 @@
-﻿using MailService.Configurations;
+﻿using FluentValidation;
+using MailService.Configurations;
 using MailService.Middlewares;
+using MailService.Validations;
 using MassTransit;
 using NLog.Extensions.Logging;
 using Shared;
+using Shared.Contracts;
 
 namespace MailService
 {
@@ -17,7 +20,7 @@ namespace MailService
             });
 
             builder.Services.AddSingleton<ILoggerProvider, NLogLoggerProvider>();
-
+            builder.Services.AddScoped<IValidator<EmailMessage>, EmailValidator>();
             builder.Services.AddOptions<AppConfigurations>().Bind(builder.Configuration.GetSection(AppConfigurations.Key));
 
 
